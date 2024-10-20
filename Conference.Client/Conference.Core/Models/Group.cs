@@ -1,16 +1,19 @@
 ﻿using System.Collections.Concurrent;
+using System.ComponentModel.DataAnnotations;
 
 namespace Conference.Core.Models
 {
     public class Group
     {
 
-        private ConcurrentDictionary<UserId, User> _usersInGroup = [];
+        private readonly ConcurrentDictionary<UserId, User> _usersInGroup = [];
 
         public required int Id { get; set; }
 
+        [StringLength(100, MinimumLength = 4)]
         public required string Name { get; set; }
 
+        [StringLength(400, MinimumLength = 4)]
         public required string Description { get; set; }
 
         public bool TryAddUserToGroup(User user)
@@ -33,5 +36,8 @@ namespace Conference.Core.Models
 
         public ICollection<User> GetAllUsersInGroup()
             => _usersInGroup.Values;
+
+        public void Clear()
+            => _usersInGroup.Clear();
     }
 }
