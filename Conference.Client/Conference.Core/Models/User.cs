@@ -4,13 +4,13 @@ namespace Conference.Core.Models
 {
     public class User
     {
-        // TODO: add regular expressions to string fields
-        public required UserId Id { get; set; }
+        public long Id { get; set; }
 
         [StringLength(20, MinimumLength = 4)]
         public required string Name { get; set; }
 
         [StringLength(40, MinimumLength = 3)]
+        [EmailAddress(ErrorMessage = "Invalid email format.")]
         public required string Email { get; set; }
 
         [StringLength(40, MinimumLength = 8)]

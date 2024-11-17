@@ -16,8 +16,8 @@ namespace Conference.Core.Models
         [StringLength(400, MinimumLength = 4)]
         public required string Description { get; set; }
 
-        public bool TryAddUserToGroup(User user)
-            => _usersInGroup.TryAdd(user.Id, user);
+        public bool TryAddUserToGroup(UserId id, User user)
+            => _usersInGroup.TryAdd(id, user);
 
         public bool TryUpdateUserStatus(UserId id, ConnectionStatus status)
         {
