@@ -9,5 +9,9 @@
              x:DataType="vm:MainViewModel"
              x:CompileBindings="True"
              x:Class="Conference.Client.Views.MainView">
-
+  
+  <ContentControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                  HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                  prism:RegionManager.RegionName="MainContentFrame" />
+  
 </UserControl>

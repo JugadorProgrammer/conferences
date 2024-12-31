@@ -1,8 +1,8 @@
-using Avalonia.Controls;
+using FluentAvalonia.UI.Windowing;
 
 namespace Conference.Client.Views
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow : AppWindow
     {
         public MainWindow()
         {

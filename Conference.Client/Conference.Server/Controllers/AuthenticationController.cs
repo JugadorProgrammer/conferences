@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using Conference.Core.DTOModels;
 
 namespace Conference.Server.Controllers
 {
@@ -21,9 +22,9 @@ namespace Conference.Server.Controllers
 
         [HttpPost]
         [Route("[action]")] 
-        public async Task<IActionResult> SingIn(string email, string password)
+        public async Task<IActionResult> SingIn([FromBody] SingInModel singInModel)
         {
-            var user = await _dataBaseService.GetUser(email, password);
+            var user = await _dataBaseService.GetUser(singInModel.Email, singInModel.Password);
             if (user is null)
             {
                 return BadRequest("User not found!");

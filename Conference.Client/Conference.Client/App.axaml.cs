@@ -2,8 +2,12 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Conference.Client.Views;
+using Conference.Client.WebServices;
+using Conference.Core.WebServices;
+using Microsoft.Extensions.Configuration;
 using Prism.DryIoc;
 using Prism.Ioc;
+using System.IO;
 
 namespace Conference.Client
 {
@@ -39,7 +43,18 @@ namespace Conference.Client
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            
+            containerRegistry.RegisterForNavigation<EnterView>();
+            containerRegistry.RegisterForNavigation<UserSpaceView>();
+            containerRegistry.RegisterForNavigation<CreationNewUserView>();
+
+            containerRegistry.Register<IConfiguration>(GetConfiguration);
+            containerRegistry.Register<IConnectionService, ConnectionService>();
         }
+
+        private IConfiguration GetConfiguration()
+            => new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .Build();
     }
 }

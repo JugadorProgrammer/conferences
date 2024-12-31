@@ -1,10 +1,15 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="Conference.Client.App"
-             RequestedThemeVariant="Default">
+             xmlns:styling="clr-namespace:FluentAvalonia.Styling;assembly=FluentAvalonia"
+             RequestedThemeVariant="Dark">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
-  
-    <Application.Styles>
-        <FluentTheme />
-    </Application.Styles>
+
+  <Application.Styles>
+    <styling:FluentAvaloniaTheme PreferUserAccentColor="True"
+                                 UseSystemFontOnWindows="True"
+                                 TextVerticalAlignmentOverrideBehavior="Disabled" />
+    
+    <StyleInclude Source="/Styles/LinkButtonStyle.axaml" />
+  </Application.Styles>
 </Application>

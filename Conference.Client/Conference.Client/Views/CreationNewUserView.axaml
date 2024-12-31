@@ -1,0 +1,44 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="clr-namespace:Conference.Client.ViewModels;assembly=Conference.Client"
+             
+             x:DataType="vm:MainViewModel"
+             x:CompileBindings="True"
+             x:Class="Conference.Client.Views.CreationNewUserView">
+
+  <UserControl.KeyBindings>
+    <KeyBinding Gesture="Enter" Command="{Binding CreateNewUserCommand}"/>
+  </UserControl.KeyBindings>
+
+  <StackPanel HorizontalAlignment="Center"
+              VerticalAlignment="Center"
+              MinWidth="400" MaxWidth="400">
+
+    <Label HorizontalAlignment="Center" 
+           Content="Name" Margin="0,10,0,0"/>
+    <TextBox Text="{Binding Name}" 
+             Watermark="say your name..." Margin="0,5,0,0"/>
+
+    <Label HorizontalAlignment="Center"
+           Content="Email" Margin="0,10,0,0"/>
+    <TextBox Text="{Binding Email}" 
+             Watermark="email@mail.adress" Margin="0,5,0,0"/>
+
+    <Label HorizontalAlignment="Center" 
+           Content="Password" Margin="0,10,0,0"/>
+    <TextBox Text="{Binding Password}" Margin="0,5,0,0"
+             Watermark="password" PasswordChar="*"/>
+
+    <Button HorizontalAlignment="Stretch" VerticalAlignment="Center"
+            HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+            Command="{Binding CreateNewUserCommand}" Content="SingUp" Margin="0,10,0,0" />
+
+    <Button Classes="link" Content="Already registered? Enter!"
+            HorizontalAlignment="Center" Margin="0,10,0,0"
+            Command="{Binding NavigateToEnterCommand}"/>
+
+  </StackPanel>
+</UserControl>
