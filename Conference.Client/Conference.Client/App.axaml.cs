@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Prism.DryIoc;
 using Prism.Ioc;
 using System.IO;
+using System.Net.Http;
 
 namespace Conference.Client
 {
@@ -46,6 +47,8 @@ namespace Conference.Client
             containerRegistry.RegisterForNavigation<EnterView>();
             containerRegistry.RegisterForNavigation<UserSpaceView>();
             containerRegistry.RegisterForNavigation<CreationNewUserView>();
+
+            containerRegistry.RegisterSingleton<HttpClientService>();
 
             containerRegistry.Register<IConfiguration>(GetConfiguration);
             containerRegistry.Register<IConnectionService, ConnectionService>();

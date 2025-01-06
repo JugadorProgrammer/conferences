@@ -5,7 +5,6 @@ namespace Conference.Core.Models
 {
     public class Group
     {
-
         private readonly ConcurrentDictionary<UserId, User> _usersInGroup = [];
 
         public required int Id { get; set; }
@@ -26,7 +25,7 @@ namespace Conference.Core.Models
                 return false;
             }
 
-            var oldUser = user.Clone(); // TODO: check in real work
+            var oldUser = (User)user.Clone(); // TODO: check in real work
             user.Status = status;
             return _usersInGroup.TryUpdate(id, user, oldUser);
         }

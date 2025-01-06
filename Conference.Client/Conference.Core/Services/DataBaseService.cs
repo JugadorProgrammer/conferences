@@ -16,6 +16,7 @@ namespace Conference.Core.Services
             _connectionString = connectionString;
         }
 
+        #region User
         public async Task<long> CreateUser(User user)
         {
             using IDbConnection connection = new NpgsqlConnection(_connectionString);
@@ -44,5 +45,23 @@ namespace Conference.Core.Services
             return (await connection.QueryAsync<User>("SELECT * FROM \"User\" WHERE \"Email\"=@email AND \"Password\"=@password",
                 new { email, password })).FirstOrDefault();
         }
+        #endregion
+
+        #region Group
+
+        public async Task<IEnumerable<Group>> GetGroups(string? name)
+        {
+            name = name is null
+                    ? string.Empty
+                    : ArgumentToLike(name.ToLower());
+
+            using IDbConnection connection = new NpgsqlConnection(_connectionString);
+            return await connection.QueryAsync<Group>("SELECT * FROM \"Group\" WHERE LOWER(\"Name\") LIKE @name", new { name });
+        }
+
+        #endregion
+
+        private string ArgumentToLike(string argument) 
+            => $"%{argument.Replace("[", "[[]").Replace("%", "[%]")}%";
     }
 }

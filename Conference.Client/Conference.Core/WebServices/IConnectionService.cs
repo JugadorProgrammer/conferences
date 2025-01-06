@@ -10,5 +10,7 @@ namespace Conference.Core.WebServices
         public Task<bool> CreateNewUserAsync(User user);
 
         public Task<bool> ExitAsync();
+
+        public Task<IEnumerable<Group>> GetGroups(string? name);
     }
 }

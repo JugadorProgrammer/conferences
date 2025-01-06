@@ -36,7 +36,7 @@ namespace Conference.Server.Controllers
 
         [HttpPost]
         [Route("[action]")]
-        public async Task<IActionResult> SingUp(User user)
+        public async Task<IActionResult> SingUp([FromBody] User user)
         {
             if (await _dataBaseService.ExistUser(user))
             {
@@ -45,7 +45,7 @@ namespace Conference.Server.Controllers
 
             user.Id = await _dataBaseService.CreateUser(user);
             await Authenticate(user);
-            return Created();
+            return Accepted();
         }
 
         [HttpPost]

@@ -21,6 +21,7 @@ namespace Conference.Core.Interfaces
         #endregion
 
         #region Group
+        public Task<IEnumerable<Group>> GetGroups(string? name);
         #endregion
     }
 }

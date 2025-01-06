@@ -5,7 +5,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:vm="clr-namespace:Conference.Client.ViewModels;assembly=Conference.Client"
              
-             x:DataType="vm:MainViewModel"
+             x:DataType="vm:CreationNewUserViewModel"
              x:CompileBindings="True"
              x:Class="Conference.Client.Views.CreationNewUserView">
 
